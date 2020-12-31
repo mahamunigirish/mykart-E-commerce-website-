@@ -1,0 +1,174 @@
+{% extends 'shop/basic.html' %}
+{% block title%} MyKart SignIn{% endblock %}
+
+{% block css %}
+
+body{
+background: #ccc;
+}
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+font-size: 3.5rem;
+}
+}
+
+#password {
+margin-top : 20px;
+width : 50%;
+margin-left : 25%;
+
+}
+
+
+#username
+{
+width : 50%;
+margin-left : 25%;
+}
+
+#showpass{
+margin-top : 30px;
+margin-left : 25%;
+}
+
+
+#signInbutton{
+background: black;
+width: 100px;
+border:none;
+outline: none;
+color: #fff;
+height: 50px;
+border-radius: 30px;
+margin-top: 20px;
+box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+margin-left :45%;
+
+}
+ 
+#signInbutton:hover
+{
+background: grey;
+color: black;
+}
+
+#login_here {
+  margin-left:40%;
+  }
+
+#mark{
+margin-left:46.5%;
+}
+
+.jumbotron{
+  margin-top:7.5%;
+}
+
+#psignin{
+  margin-left : 40%;
+}
+
+#space_msg{
+
+  marging-top : 20%;
+  color : green;
+}
+#s_msg{
+  margin-left : 40%;
+  color : green;
+}
+{% endblock %}
+{% block body %}
+
+
+<div class="container">
+  <div class="jumbotron">
+    
+    <h1 id="login_here">Login here :</h1>
+    <label id="s_msg">{{s_msg}}</label>
+    <form action=/shop/Login/ method="post">{% csrf_token %}
+      
+
+      
+        <img class="mb-4" src="/mycard/media/shop/images/3dr.png" alt="">
+
+        <h1 class="h3 mb-3 font-weight-normal " id="psignin">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Username</label>
+      
+      <input type="text" placeholder="Enter Username" class="form-control" name="uname" id="username" autofocus=""
+        required>
+      <label for="inputPassword" class="sr-only">Password</label>
+
+      <input type="password" id="password" class="form-control" placeholder="Enter Password" name="psw" required>
+      <div class="checkbox mb-3">
+
+        <!-- <div id="msg">
+
+          <b id="space_msg">
+              <label id="space"></label>
+              {% for msg in messages %}
+              {{msg}}  !!!
+              <label id="space"></label>
+              {% endfor %}
+              {{ s_msg}}
+          </b>
+
+        </div> -->
+
+
+        <input type="checkbox" onclick="myFunction()" id="showpass"> Show Password
+
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="signInbutton">Sign in</button>
+      <p class="mt-5 mb-3 text-muted" id="mark">©Mykart</p>
+
+
+
+
+    </form>
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block js %}
+<script>
+  function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+
+{% if thank %}
+alert('Invalid Login Details');
+
+document.location = "/shop/Login";
+{% endif %}
+
+
+</script>
+
+
+
+{% endblock %}

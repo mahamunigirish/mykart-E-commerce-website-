@@ -1,0 +1,186 @@
+{% extends 'shop/basic.html' %} {% block title%} Contact Us - MyKart {%endblock %}
+{% block css %}
+body{
+	
+	background: #ccc;
+	<!-- font-size: 14px;
+	font-family:sans-serif; -->
+}
+.container{
+	width: 80%;
+	margin: 50px auto;
+}
+.Contact-box
+{
+	background: #fff;
+	display: flex ;
+}
+.Contact-left
+{
+	flex-basis: 60%;
+	padding: 40px 60px;
+}
+.Contact-right
+{
+	flex-basis: 40%;
+	padding: 40px ;
+	background: black;
+	color: #fff;
+}
+h1{
+	margin-bottom: 10px;
+}
+.container p{
+	margin-bottom: 40px;
+}
+.input-row{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.input-row .input-group{
+	flex-basis: 45%;
+
+}
+.input-row .input-group1{
+	/*width: 100%;*/
+	flex-basis: 100%;
+
+}
+input{
+	width: 100%;
+	border: none;
+	border-bottom: 1px  solid #ccc;
+	outline: none;
+	padding-bottom: 5px;
+}
+textarea{
+	width: 100%;
+	border:1px solid #ccc;
+	outline: none;
+	padding: 10p;
+	box-sizing: border-box;
+}
+label{
+	margin-bottom: 6px;
+	display: block;
+	color: black;
+}
+#button{
+	background: black;
+	width: 100px;
+	border:none;
+	outline: none;
+	color: #fff;
+	height: 35px;
+	border-radius: 30px;
+	margin-top: 20px;
+	box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+
+}
+
+.Contact-left h3{
+	color: black;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.Contact-right h3{
+	
+	font-weight: 600;
+	margin-bottom: 30px;
+	color: #ccc;
+}
+
+table tr td:first-child
+{
+	padding-right: 20px;
+}
+
+table tr td{
+	padding-top: 20px;
+	/*color: cyan;*/
+	color: #ccc;
+}
+
+#button:hover
+{
+	background: grey;
+	color: black;
+}
+
+{% endblock %}
+{% block body %}
+
+
+    <div class="container">
+    <!-- <div class="container my-3"> -->
+      <h1>Connect With Us</h1>
+      <p>
+        We Would love to respond to your queries and help you succeed.<br />
+        Feel free to get in touch with us.
+      </p>
+      <div class="Contact-box">
+        <div class="Contact-left">
+          <h3>Search your request</h3>
+          <form action="/shop/contact/" method="post">{% csrf_token %}
+            <div class="input-row">
+              <div class="input-group">
+                <label for="name">Name</label>
+                    <input type="text"  id="name" name='name' placeholder="Enter Your Name">
+              </div>
+              <div class="input-group">
+                <label for="name">Email</label>
+                <input type="email"  id="email" name='email' placeholder="Enter Your Email">
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="input-group1">
+                <label for="name">Phone</label>
+                <input type="tel"  id="phone" name='phone' placeholder="Enter Your Phone Number">
+              </div>
+            </div>
+
+            <label for="desc">How May We Help You?</label>
+            <textarea id="desc" name='desc' rows="3"></textarea>
+
+            <button type="submit" id="button" >Send</button>
+          </form>
+        </div>
+        <div class="Contact-right">
+          <h3>Reach us</h3>
+          <table>
+            <tr>
+              <td>Email</td>
+              <td>contactus@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>+91 1234567890</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>
+                #212, Ground floor,7th cross<br />
+                some layout ,some road, Koromangla<br />
+                Bengrulu 560001
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+ 
+
+{% endblock %}
+
+{% block js %}
+<script >
+{% if thank %}
+alert('Thanks for contacting us.We will get back to you soon');
+
+document.location = "/shop/contact";
+{% endif %}
+</script>
+{% endblock%}

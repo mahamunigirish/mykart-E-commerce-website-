@@ -1,0 +1,191 @@
+{% extends 'shop/basic.html' %}
+{% block title%} MyKart SignUp{% endblock %}
+
+{% block css%}
+
+.jumbotron{
+  margin-top : 7.5%;
+}
+
+#Rbutton{
+  background: black;
+  width: 100px;
+  border:none;
+  outline: none;
+  color: #fff;
+  height: 50px;
+  border-radius: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+  margin-left :45%;
+  
+  }
+#Rbutton:hover
+{
+background: grey;
+color: black;
+}
+
+#CNA{
+  font-family : initial;
+  color : currentColor;
+  margin-left : 30%;
+}
+#imfp{
+  font-family : initial;
+  color : currentColor;
+  margin-left : 32.5%;
+}
+
+.input-row{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.input-row .input-group{
+  flex-basis: 45%;
+}
+
+#Sbutton{
+  margin-top : 30px;
+  margin-left : 40%;
+  }
+#mark{
+    margin-left:46.5%;
+    }
+
+#space_msg{
+
+  marging-top : 20%;
+  color : green;
+}
+{% endblock %}
+{% block body %}
+
+
+
+
+<div class="container">
+  <div class="jumbotron">
+          <form action="/shop/registration/" method="post">
+            {% csrf_token %}
+            
+
+                <h1 id="CNA">Create New Account</h1>
+                <p id="imfp">Please fill in this form to create an account.</p>
+                <hr>
+                <!-- <label id="space">...... </label> -->
+                <label id="s_msg">{{s_msg}}</label>
+                
+                <div class="input-row">
+                  <div class="input-group">
+                  <label for="inputEmail" class="sr-only">Email</label>
+                  <input type="email" placeholder="Enter Email" class="form-control" name="email" id="email" autofocus=""required>
+                  </div>
+                  <div class="input-group">
+                  <label for="inputEmail" class="sr-only">Username</label>
+                  <input type="text" placeholder="Enter Username" class="form-control"  name="username" id="username"  autofocus=""required>
+                   </div>
+                </div>
+
+
+                
+
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="password" placeholder="Enter Password" class="form-control" name="psw" id="psw" autofocus=""required>
+                  </div>
+                  <div class="input-group">
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <input type="password" placeholder="Repeat Password" class="form-control" name="psw-repeat" id="psw-repeat"  autofocus=""required>
+                  </div>
+                </div>
+
+                <div id="msg">
+
+                  <b id="space_msg">
+                      <label id="space"></label>
+                      {% for msg in messages %}
+                      {{msg}}  !!!
+                      <label id="space"></label>
+                      {% endfor %}
+                  </b>
+
+                </div>
+
+
+
+                <input type="checkbox" onclick="myFunction()"  id="Sbutton">  Show Password
+                <hr>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+                <button type="submit" class="registerbtn" id="Rbutton">Register</button>
+                <p class="mt-5 mb-3 text-muted" id="mark">©Mykart</p>
+
+                
+
+
+          </form>
+  
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+<script >
+  function myFunction() {
+    var x = document.getElementById("psw");
+    var y = document.getElementById("psw-repeat");
+    if (x.type === "password") {
+        x.type = "text";
+        y.type = "text";
+    } else {
+        x.type = "password";
+        y.type = "password";
+    }
+}
+
+
+
+{% if thank %}
+alert('SignUp Succesful');
+
+
+window.location.replace("http://127.0.0.1:8000/shop/");
+{% endif %}
+</script>
+{% endblock%}
+
+
+
+
+
+<!-- Previous code 
+-->
+
+
+
+ <!-- <label for="email"><b>Email:</b></label>
+
+                <input type="email" placeholder="Enter Email" name="email" id="email" required> -->
+
+
+<!-- <label for="username"><b>Username:</b></label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required> -->
+
+
+
+<!-- <label for="psw"><b>Password:</b></label>
+
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required> -->
+
+
+<!-- <label for="psw-repeat"><b>Repeat Password:</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required> -->
+
+

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <!--  Fontawesoem cdn   -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <title>{% block title%} {% endblock %}</title>
+    <style>
+
+      .bg-dark {
+        background-color: #000 !important;
+    }
+
+
+      body{
+        background: #ccc;
+      }      
+
+
+           .sfooter
+        {
+          margin-top: 50px;
+          background-color: #000;
+          color: #fff;
+        }
+           .footer
+      	{
+
+              height: 20vh;
+              margin-top:5%;
+
+
+      		   display: flex;
+      		   justify-content: center;
+      		   align-items: center;
+             box-sizing: border-box;
+             margin-left:2%;
+
+        }
+
+
+
+
+      	.footer  a
+      	{
+      		height: 100px;
+      		width: 100px;
+      		background-color: f5f6fa;
+      		border-radius: 50px;
+      		text-align: center;
+      		margin: 10px;
+      		box-shadow: 1px 4px 2px 2px #dcdde1;
+          line-height: 110px;
+
+      	}
+      	.footer a i {
+      		transition: all 0.3s linear;
+
+      	}
+      	.footer a:hover i {
+      		transform: scale(1.4);
+      	}
+      	.footer .fa-instagram{
+      		color: #e84393;
+      	}
+      	.footer .fa-youtube{
+      		color: #e84118
+      	}
+
+      	.footer .fa-linkedin{
+      		color: #0097e6;
+      	}
+      	.footer .fa-twitter{
+      		color: #0097ec;
+        }
+      .fa-shopping-cart{
+          color: orangered;
+        }
+
+        p.copyright{
+          margin-left: 45%;
+        }
+
+        #RegisterwalaInfo{
+          margin-right: auto;
+          color:rgba(255,255,255,.75);
+          font-size: 175%;
+          margin-top: 20px;
+          font-style : italic;
+          padding-right: 4%;
+          padding-bottom: 1%;
+        }
+
+        #usernameInfo{
+          margin-right: auto;
+          color:rgba(255,255,255,.75);
+          font-size: 175%;
+          margin-top: 20px;
+          font-style : italic;
+          padding-right: 10%;
+          padding-bottom: 1%;
+          
+        }
+
+        #usernameInfo:hover,#RegisterwalaInfo:hover{
+          color:#ffff;
+        }
+
+        a.nav-link{
+          font-size: x-large;
+          color: rgba(255,255,255,.75);
+        }
+
+        a.nav-link:hover {
+          font-size: x-large;
+          color: #ffffff
+        }
+
+        .nav-link{
+          font-weight: bolder;
+        }
+        .RegiLog{
+          color: rgba(255,255,255,.75);
+          display: block;
+          padding-left: .5rem;
+          padding-right: .5rem;
+          font-weight: bolder;
+          font-size: x-large;
+        }
+        .RegiLog:hover{
+          color: #fff;
+
+        }
+        .InOut{
+          color: rgba(255,255,255,.75);
+          display: block;
+          padding-left: .5rem;
+          padding-right: .5rem;
+          font-weight: bolder;
+          font-size: x-large;
+        }
+        .InOut:hover{
+          color: #fff;
+        }
+
+
+       
+
+             {% block css %}
+              {% endblock %}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/shop">MyKart</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/shop"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/about">About Us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/tracker">Tracker</a>
+          </li>
+
+          
+
+          <li class="nav-item">
+            <a class="nav-link" href="/shop/contact">Contact Us</a>
+          </li>
+
+          
+        </ul>
+
+        {% if user.is_authenticated %}
+        <h2 id="usernameInfo">Hello {{ user.username }}👨‍🦱</h2>
+        
+        {% else %}
+        <h2 id="RegisterwalaInfo">Register or Login if you'd like to</h2>
+        
+        {% endif %}
+        
+
+        <form
+          method="get"
+          action="/shop/search/"
+          class="form-inline my-2 my-lg-0"
+        >
+          <input
+          class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="search"
+            id="searcharea11"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        {% if user.is_authenticated %}
+        <li><a class="InOut" href="/shop/logout">Logout</a></li>
+        {% else %}
+        <li >
+          <a  class="RegiLog" href="/shop/registration">Register</a>
+        </li>
+        <li >
+        <a class="InOut" href="/shop/Login">Login</a>
+        </li>
+        {% endif %}
+        <button
+          type="button"
+          class="btn btn-secondary mx-2"
+          id="popcart"
+          data-container="body"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-html="true"
+          data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        >
+          <i class="fa fa-2x fa-shopping-cart"></i>(<span id="cart">0</span>)
+        </button>
+        
+
+        <!-- {% if user.is_authenticated %}
+        <li><a class="InOut" href="/shop/logout">Logout</a></li>
+        {% else %}
+        <li >
+          <a  class="RegiLog" href="/shop/registration">Register</a>
+        </li>
+        <li >
+        <a class="InOut" href="/shop/Login">Login</a>
+        </li>
+        {% endif %} -->
+
+
+      </div>
+    </nav>
+    {% block body %} {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+    {% block js %} {% endblock %} {% block footer%}
+    <section class="sfooter">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 footer">
+          <a href="#" target="_blank">
+            <i class="fa fa-2x fa-facebook"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fa fa-2x fa-instagram"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fa fa-2x fa-youtube"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+      <hr />
+      <p class="copyright">Thanks For Coming !!!</p>
+    </section>
+
+    {% endblock%}
+  </body>
+</html>
