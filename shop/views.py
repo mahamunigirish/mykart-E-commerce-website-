@@ -34,18 +34,7 @@ def  login_check(request):
         username = request.POST.get('uname')
         password = request.POST.get('psw')
         user = authenticate(username=username, password=password)
-        # if user:
-        #     if user.is_active:
-        #         login(request,user)
-        #         return HttpResponseRedirect(reverse('index'))
-                
-        #     else:
-        #         return HttpResponse("Your account was inactive.")
-        # else:
-        #     print("Someone tried to login and failed.")
-        #     print("They used username: {} and password: {}".format(username,password))
-        #     return HttpResponse("Invalid login details given")
-        #     messages.info(request,"Invalid Login deatails given!")
+        
 
         if user is not None:
             thank = False
