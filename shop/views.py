@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
 from django.http import HttpResponse
-MERCHANT_KEY = 'OHpU3o5Sv44UZOw@'
+MERCHANT_KEY = '###############'
 
 @login_required
 def special(request):
@@ -223,7 +223,7 @@ def checkout(request):
         # Request paytm to transfer the amount to your account after payment by user
         param_dict = {
 
-                'MID': 'lXTKne06188945963349',
+                'MID': '#############',
                 # 'Username' : user_passes_test.username,
                 'ORDER_ID': str(order.order_id),
                 'TXN_AMOUNT': str(amount),
